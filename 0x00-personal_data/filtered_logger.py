@@ -7,7 +7,7 @@ from typing import List
 import re
 
 
-def filter_datum(fields: list[str], redaction: str, message: str, separator: str) -> str:
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
     """_summary_
 
     Returns:
