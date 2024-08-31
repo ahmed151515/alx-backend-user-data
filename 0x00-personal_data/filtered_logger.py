@@ -3,9 +3,23 @@
     """
 
 from typing import List
-
 import re
 import logging
+
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
+
+
+def get_logger() -> logging.Logger:
+    logger = logging.Logger("user_data", logging.INFO)
+    logger.propagate = False
+    target_handler = logging.StreamHandler()
+    target_handler.setLevel(logging.INFO)
+
+    formatter = RedactingFormatter(list(PII_FIELDS))
+    target_handler.setFormatter(formatter)
+
+    logger.addHandler(target_handler)
+    return logger
 
 
 class RedactingFormatter(logging.Formatter):
