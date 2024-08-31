@@ -4,6 +4,8 @@
 
 from typing import List
 
+import re
+
 
 def filter_datum(fields: list[str], redaction: str, message: str, separator: str) -> str:
     """_summary_
@@ -11,10 +13,6 @@ def filter_datum(fields: list[str], redaction: str, message: str, separator: str
     Returns:
         str: _description_
     """
-    log = message.split(separator)
     for feild in fields:
-        for i in range(len(log)):
-            if feild in log[i]:
-                new = f'{feild}={redaction}'
-                log[i] = new
-    return f"{separator}".join(log)
+        re.sub(f"{feild}=[^{separator}]+", redaction, message)
+    return message
