@@ -10,6 +10,11 @@ import os
 
 
 def get_db() -> connector.connection.MySQLConnection:
+    """_summary_
+
+    Returns:
+        connector.connection.MySQLConnection: _description_
+    """
     db = connector.connect(host=os.getenv(
         "PERSONAL_DATA_DB_HOST", "localhost"),
         user=os.getenv("PERSONAL_DATA_DB_USERNAME", "root"),
