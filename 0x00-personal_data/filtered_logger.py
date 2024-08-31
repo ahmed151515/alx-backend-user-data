@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""solve task 
+"""solve task
     """
 
 from typing import List
@@ -9,7 +9,7 @@ import logging
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
+    """Redacting Formatter class
         """
 
     REDACTION = "***"
