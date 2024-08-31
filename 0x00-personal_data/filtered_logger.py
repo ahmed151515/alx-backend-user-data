@@ -5,6 +5,18 @@
 from typing import List
 import re
 import logging
+from mysql import connector
+import os
+
+
+def get_db() -> connector.connection.MySQLConnection:
+    db = connector.connect(host=os.getenv(
+        "PERSONAL_DATA_DB_HOST", "localhost"),
+        user=os.getenv("PERSONAL_DATA_DB_USERNAME", "root"),
+        password=os.getenv("PERSONAL_DATA_DB_PASSWORD", ""),
+        database=os.getenv("PERSONAL_DATA_DB_NAME"))
+    return db
+
 
 PII_FIELDS = ("name", "email", "password", "ssn", "phone")
 
