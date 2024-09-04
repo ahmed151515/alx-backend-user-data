@@ -1,0 +1,1 @@
+solve task to win
