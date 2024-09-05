@@ -5,6 +5,8 @@ This module defines the SessionAuth class, which inherits from the Auth class.
 from api.v1.auth.auth import Auth
 from uuid import uuid4
 
+from models.user import User
+
 
 class SessionAuth(Auth):
     """class i dont know yet"""
@@ -23,3 +25,9 @@ class SessionAuth(Auth):
         if session_id is None or type(session_id) != str:
             return None
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """get user by cookie"""
+        sessionID = self.session_cookie(request)
+        userID = self.user_id_for_session_id(sessionID)
+        return User.get(userID)
