@@ -42,6 +42,7 @@ def not_found(error) -> str:
 
 @app.before_request
 def before_requests():
+    """handel all of request for auth"""
     if auth is None:
         pass
     ex_path = ['/api/v1/status/',
