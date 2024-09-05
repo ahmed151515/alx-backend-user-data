@@ -42,7 +42,7 @@ class BasicAuth(Auth):
 
     def extract_user_credentials(
             self, decoded_base64_authorization_header: str) -> (str, str):
-        """return email and username as tuple"""
+        """return email and password as tuple"""
         if decoded_base64_authorization_header is None or type(
                 decoded_base64_authorization_header) != str:
             return (None, None)
@@ -68,3 +68,10 @@ class BasicAuth(Auth):
             return None
         if users[0].is_valid_password(user_pwd):
             return users[0]
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        header = self.authorization_header(request)
+        b64 = self.extract_base64_authorization_header(header)
+        decode = self.decode_base64_authorization_header(b64)
+        email, password = self.extract_user_credentials(decode)
+        return self.user_object_from_credentials(email, password)
