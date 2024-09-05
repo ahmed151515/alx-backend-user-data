@@ -4,7 +4,7 @@ This module defines the BasicAuth class, which inherits from the Auth class.
 """
 from base64 import b64decode, b64encode
 import re
-from auth import Auth
+from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
