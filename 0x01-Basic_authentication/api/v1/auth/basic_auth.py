@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""handel basic auth whis class"""
+"""_summary_
+    """
 from auth import Auth
 
 
