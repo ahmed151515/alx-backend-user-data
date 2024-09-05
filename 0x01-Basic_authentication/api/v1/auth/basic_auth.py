@@ -15,7 +15,8 @@ class BasicAuth(Auth):
         Auth (class): The parent class for all authentication methods.
     """
 
-    def extract_base64_authorization_header(self, authorization_header: str) -> str:
+    def extract_base64_authorization_header(self,
+                                            authorization_header: str) -> str:
         """return  header"""
         if authorization_header is None or type(authorization_header) != str:
             return None
@@ -25,9 +26,11 @@ class BasicAuth(Auth):
         value = authorization_header.split(" ")[1]
         return value
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(self,
+                                base64_authorization_header: str) -> str:
         """decode from base64"""
-        if base64_authorization_header is None or type(base64_authorization_header) != str:
+        if base64_authorization_header is None or type(
+                base64_authorization_header) != str:
             return None
         try:
             value = b64decode(base64_authorization_header)
