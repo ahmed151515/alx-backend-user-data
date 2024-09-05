@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""_summary_
-    """
+"""
+This module defines the BasicAuth class, which inherits from the Auth class.
+"""
+
+
 from auth import Auth
 
 
 class BasicAuth(Auth):
-    """_summary_
+    """
+    Basic authentication class that inherits from Auth.
 
     Args:
-        Auth (_type_): _description_
+        Auth (class): The parent class for all authentication methods.
     """
     pass
