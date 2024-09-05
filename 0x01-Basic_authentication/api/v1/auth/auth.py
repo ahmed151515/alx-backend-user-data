@@ -10,8 +10,15 @@ class Auth:
     """template for all authentication system"""
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """i dont know what is yet"""
-        return False
+        """check if path in excluded_paths"""
+        if path is None or excluded_paths is None or len(excluded_paths) == 0:
+            return True
+        if path[-1] != '/':
+            path += '/'
+        for exPath in excluded_paths:
+            if path == exPath:
+                return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """i dont know what is yet"""
