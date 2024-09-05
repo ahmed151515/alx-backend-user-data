@@ -70,6 +70,7 @@ class BasicAuth(Auth):
             return users[0]
 
     def current_user(self, request=None) -> TypeVar('User'):
+        """make basic auth finaly"""
         header = self.authorization_header(request)
         b64 = self.extract_base64_authorization_header(header)
         decode = self.decode_base64_authorization_header(b64)
