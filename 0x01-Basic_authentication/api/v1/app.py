@@ -40,7 +40,7 @@ def not_found(error) -> str:
     return jsonify({"error": "Forbidden"}), 403
 
 
-@app.before_request()
+@app.before_request
 def before_requests():
     if auth is None:
         pass
