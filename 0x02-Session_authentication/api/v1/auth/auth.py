@@ -33,13 +33,10 @@ class Auth:
         """i dont know what is yet"""
         return None
 
+    def session_cookie(self, request=None):
+        """returns a cookie value from a request"""
+        if request is None:
+            return None
+        sessionName = getenv("SESSION_NAME", "_my_session_id")
 
-sessionName = getenv("SESSION_NAME", "_my_session_id")
-
-
-def session_cookie(self, request=None):
-    """returns a cookie value from a request"""
-    if request is None:
-        return None
-
-    return request. cookies["sessionName"]
+        return request. cookies["sessionName"]
