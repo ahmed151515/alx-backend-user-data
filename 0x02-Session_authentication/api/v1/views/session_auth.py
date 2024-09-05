@@ -16,12 +16,14 @@ def login():
         return jsonify({"error": "email missing"}), 400
     if password is None or password == "":
         return jsonify({"error": "password missing"}), 400
-    user = User.search({"email": email})[0]
-    if user is None:
+    users = User.search({"email": email})
+    if users is None or users == []:
         return jsonify({"error": "no user found for this email"}), 404
-    if user.is_valid_password(password):
-        return jsonify({"error": "wrong password"}), 401
     from api.v1.app import auth
-    sessionID = auth.create_session(user.id)
-    json = jsonify(user.to_json())
-    json.set_cookie(getenv("SESSION_NAME"), sessionID)
+    for user in users:
+        if user.is_valid_password(password):
+            return jsonify({"error": "wrong password"}), 401
+        sessionID = auth.create_session(user.id)
+        json = jsonify(user.to_json())
+        json.set_cookie(getenv("SESSION_NAME"), sessionID)
+        return json
