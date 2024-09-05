@@ -2,7 +2,7 @@
 """
 This module defines the BasicAuth class, which inherits from the Auth class.
 """
-from base64 import decode, encode
+from base64 import b64decode, b64encode
 import re
 from auth import Auth
 
@@ -24,3 +24,13 @@ class BasicAuth(Auth):
             return None
         value = authorization_header.split(" ")[1]
         return value
+
+    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+        """decode from base64"""
+        if base64_authorization_header is None or type(base64_authorization_header) != str:
+            return None
+        try:
+            value = b64decode(base64_authorization_header)
+            return value.decode("utf-8")
+        except:
+            return None
