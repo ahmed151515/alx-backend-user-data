@@ -52,16 +52,16 @@ class DB:
                 - User object
         """
 
-        attrs, vals = [], []
+        feilds, values = [], []
         for attr, val in kwargs.items():
             if not hasattr(User, attr):
                 raise InvalidRequestError()
-            attrs.append(getattr(User, attr))
-            vals.append(val)
+            feilds.append(getattr(User, attr))
+            values.append(val)
 
         session = self._session
         query = session.query(User)
-        user = query.filter(tuple_(*attrs).in_([tuple(vals)])).first()
+        user = query.filter(tuple_(*feilds).in_([tuple(values)])).first()
         if not user:
             raise NoResultFound()
-        return users
+        return user
