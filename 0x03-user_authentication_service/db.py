@@ -36,6 +36,10 @@ class DB:
         user = User()
         user.email = email
         user.hashed_password = hashed_password
-        session.add(user)
-        session.commit()
+        try:
+            session.add(user)
+            session.commit()
+        except Exception as e:
+            session.rollback()
+            user = None
         return user
