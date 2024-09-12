@@ -5,10 +5,10 @@
 from sqlalchemy import String, Integer, Column
 from sqlalchemy.ext.declarative import declarative_base
 
-base = declarative_base()
+Base = declarative_base()
 
 
-class User(base):
+class User(Base):
     """class for user
 
     Args:
