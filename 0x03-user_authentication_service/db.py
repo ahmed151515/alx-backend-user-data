@@ -36,3 +36,5 @@ class DB:
         user.email = email
         user.hashed_password = hashed_password
         self.__session.add(user)
+        self.__session.commit()
+        return user
