@@ -44,7 +44,8 @@ class DB:
         return user
 
     def find_user_by(self, **kwargs) -> User:
-        """get user"""
+        """Finds a user based on a set of filters.
+        """
         fields, values = [], []
         for key, value in kwargs.items():
             if hasattr(User, key):
