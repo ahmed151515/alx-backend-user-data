@@ -32,7 +32,7 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """add user to DB"""
-        session = self.__session
+        session = self._session
         user = User(email=email, hashed_password=hashed_password)
 
         try:
