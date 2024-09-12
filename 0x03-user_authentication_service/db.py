@@ -39,7 +39,7 @@ class DB:
         try:
             session.add(user)
             session.commit()
-        except Exception as e:
+        except Exception:
             session.rollback()
             user = None
         return user
