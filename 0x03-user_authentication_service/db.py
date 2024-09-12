@@ -36,9 +36,9 @@ class DB:
         user = User(email=email, hashed_password=hashed_password)
 
         try:
-            session.add(user)
-            session.commit()
+            self.__session.add(user)
+            self.__session.commit()
         except Exception:
-            session.rollback()
+            self.__session.rollback()
             user = None
         return user
